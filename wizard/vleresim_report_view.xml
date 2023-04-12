@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_vleresim_report" model="ir.ui.view">
+            <field name="name">Permbledhja e notave</field>
+            <field name="model">vleresim.report</field>
+            <field name="arch" type="xml">
+                <form string="Permbledhja e notave">
+                    <group>
+                        <field name="student_ids" widget="many2many_tags"/>
+                        <field name="pike_min"/>
+                        <field name="pike_max"/>
+                    </group>
+                    <footer>
+                        <button name="print_report" string="Print" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_vleresim_report" model="ir.actions.act_window">
+            <field name="name">Vleresim report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vleresim.report</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_vleresim_report"/>
+            <field name="target">new</field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="menu_vleresim_report" name="Raporti i notave" parent="student_root_menu"
+                  action="action_vleresim_report" sequence="100"/>
+
+    </data>
+</odoo>

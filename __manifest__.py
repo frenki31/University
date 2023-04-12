@@ -1,0 +1,27 @@
+{
+    'name': 'University',
+    'version': '1.02',
+    'summary': 'Summary',
+    'description': 'Description',
+    'category': 'School',
+    'author': 'Frenki',
+    'website': 'Website',
+    'license': '',
+    'depends': ['base'],
+    'data': [
+        'views/student_view.xml',
+        'views/program_view.xml',
+        'views/kurs_view.xml',
+        'views/vleresim_view.xml',
+        'views/fatura_view.xml',
+        'views/pedagog_view.xml',
+        'views/orar_view.xml',
+        'views/departament_view.xml',
+        'wizard/vleresim_report_view.xml',
+        'report/vleresim_report_view.xml',
+    ],
+    'demo': [],
+    'installable': True,
+    'auto_install': False,
+    'application': True
+}

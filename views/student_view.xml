@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="student_form_view" model="ir.ui.view">
+            <field name="name">university.student.form</field>
+            <field name="model">university.student</field>
+            <field name="arch" type="xml">
+                <form string="Student">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="emri"/>
+                            <h1>
+                                <field name="emri" placeholder="Emer"/>
+                                <field name="mbiemri" placeholder="Mbiemer"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="ditelindja"/>
+                                <field name="email"/>
+                            </group>
+                            <group>
+                                <field name="program_id"/>
+                                <field name="viti_regjistrimit"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="student_tree_view" model="ir.ui.view">
+            <field name="name">university.student.tree</field>
+            <field name="model">university.student</field>
+            <field name="arch" type="xml">
+                <tree string="Student">
+                    <field name="emri"/>
+                    <field name="mbiemri"/>
+                    <field name="email"/>
+                    <field name="ditelindja"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="student_search_view" model="ir.ui.view">
+            <field name="name">university.student.search</field>
+            <field name="model">university.student</field>
+            <field name="arch" type="xml">
+                <search string="Student">
+                    <field name="emri"/>
+                    <field name="mbiemri"/>
+                    <field name="ditelindja"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="student_act_window" model="ir.actions.act_window">
+            <field name="name">Studentet</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">university.student</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Kliko per te shtuar studente.
+                </p>
+            </field>
+        </record>
+
+        <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+        <menuitem id="student_root_menu" name="Student" sequence="30">
+            <menuitem name="Studentet" id="student_menu" action="student_act_window"/>
+        </menuitem>
+
+    </data>
+</odoo>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="vleresim_form_view" model="ir.ui.view">
+            <field name="name">university.vleresim.form</field>
+            <field name="model">university.vleresim</field>
+            <field name="arch" type="xml">
+                <form string="Pasqyra e notave">
+                    <header>
+                        <button class="btn-primary" name="konfirmo" type="object" string="Konfirmo notat" attrs="{'invisible': [('status', '=', 'done')]}"/>
+                        <button class="btn-primary" name="draft" type="object" string="Kthe ne draft" attrs="{'invisible': [('status', '=', 'draft')]}"/>
+                        <field name="status" widget="statusbar" statusbar_visible="draft"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="student_id" attrs="{'readonly':[('status','!=','draft')]}"/>
+                                <field name="kredite" attrs="{'readonly':[('status','!=','draft')]}"/>
+                            </group>
+                            <group>
+                                <field name="total"/>
+                                <field name="nota"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="vleresim_kursi_page" string="Vleresimet">
+                                <field name="vleresim_ids" attrs="{'readonly':[('status','!=','draft')]}">
+                                    <tree editable="bottom">
+                                        <field name="kurs_id"/>
+                                        <field name="detyra"/>
+                                        <field name="projekti"/>
+                                        <field name="provimi"/>
+                                        <field name="total"/>
+                                        <field name="kredite"/>
+                                        <field name="nota"/>
+                                        <field name="kurs_ids" invisible="1"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <group>
+                                                <field name="kurs_id"/>
+                                                <field name="kredite"/>
+                                                <field name="kurs_ids" invisible="1"/>
+                                            </group>
+                                            <group>
+                                                <field name="detyra"/>
+                                                <field name="projekti"/>
+                                                <field name="provimi"/>
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="vleresim_tree_view" model="ir.ui.view">
+            <field name="name">university.vleresim.tree</field>
+            <field name="model">university.vleresim</field>
+            <field name="arch" type="xml">
+                <tree string="Pasqyra e notave">
+                    <field name="student_id"/>
+                    <field name="total"/>
+                    <field name="nota"/>
+                    <field name="kredite"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="vleresim_search_view" model="ir.ui.view">
+            <field name="name">university.vleresim.search</field>
+            <field name="model">university.vleresim</field>
+            <field name="arch" type="xml">
+                <search string="Pasqyra e notave">
+                    <field name="student_id"/>
+                    <field name="nota"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="vleresim_act_window" model="ir.actions.act_window">
+            <field name="name">Pasqyra e notave</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">university.vleresim</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Vleresim.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Vleresim" id="vleresim_menu" parent="student_root_menu" action="vleresim_act_window"/>
+
+    </data>
+</odoo>

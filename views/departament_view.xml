@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="departament_form_view" model="ir.ui.view">
+            <field name="name">university.departament.form</field>
+            <field name="model">university.departament</field>
+            <field name="arch" type="xml">
+                <form string="Departament">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="departament"/>
+                            </group>
+                            <group>
+                                <field name="drejtues_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="pedagog_page" string="Pedagoget">
+                                <field name="pedagog_ids" domain="[('id','=',active_id)]" readonly="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="departament_tree_view" model="ir.ui.view">
+            <field name="name">university.departament.tree</field>
+            <field name="model">university.departament</field>
+            <field name="arch" type="xml">
+                <tree string="Departament">
+                    <field name="departament"/>
+                    <field name="drejtues_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="departament_search_view" model="ir.ui.view">
+            <field name="name">university.departament.search</field>
+            <field name="model">university.departament</field>
+            <field name="arch" type="xml">
+                <search string="Departament">
+                    <field name="departament"/>
+                    <field name="drejtues_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="departament_act_window" model="ir.actions.act_window">
+            <field name="name">Departament</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">university.departament</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Departament.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Departament" id="departament_menu" parent="pedagog_root_menu" action="departament_act_window"/>
+
+    </data>
+</odoo>

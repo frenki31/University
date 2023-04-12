@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="program_form_view" model="ir.ui.view">
+            <field name="name">university.program.form</field>
+            <field name="model">university.program</field>
+            <field name="arch" type="xml">
+                <form string="Programi">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="emertimi"/>
+                            <h1>
+                                <field name="emertimi" placeholder="Emertimi"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="viti"/>
+                                <field name="tarifa"/>
+                            </group>
+                            <group>
+                                <field name="kurs_ids" widget="many2many_tags"/>
+                                <field name="kredite_detyruara"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Studentet">
+                                <field name="student_ids" domain="[('id','=',active_id)]" readonly="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="program_tree_view" model="ir.ui.view">
+            <field name="name">university.program.tree</field>
+            <field name="model">university.program</field>
+            <field name="arch" type="xml">
+                <tree string="Program">
+                    <field name="emertimi"/>
+                    <field name="viti"/>
+                    <field name="kurs_ids"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="program_search_view" model="ir.ui.view">
+            <field name="name">university.program.search</field>
+            <field name="model">university.program</field>
+            <field name="arch" type="xml">
+                <search string="Program">
+                    <field name="emertimi"/>
+                    <field name="viti"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="program_act_window" model="ir.actions.act_window">
+            <field name="name">Programet e studimit</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">university.program</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Program.
+                </p>
+            </field>
+        </record>
+
+        <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+        <menuitem id="program_root_menu" name="Program" sequence="20">
+            <menuitem name="Programet" id="program_menu" action="program_act_window"/>
+        </menuitem>
+    </data>
+</odoo>

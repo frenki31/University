@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="orari_form_view" model="ir.ui.view">
+            <field name="name">university.orari.form</field>
+            <field name="model">university.orari</field>
+            <field name="arch" type="xml">
+                <form string="Orari">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="semester"/>
+                            </group>
+                            <group>
+                                <field name="viti"/>
+                                <field name="dita"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="orar_page" string="Oret">
+                                <field name="orar_ids">
+                                    <tree editable="bottom">
+                                        <field name="kurs_id"/>
+                                        <field name="pedagog_id"/>
+                                        <field name="ora"/>
+                                        <field name="semester" invisible="1"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <group>
+                                                <field name="kurs_id"/>
+                                                <field name="pedagog_id"/>
+                                            </group>
+                                            <group>
+                                                <field name="ora"/>
+                                                <field name="semester" invisible="1"/>
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="orari_tree_view" model="ir.ui.view">
+            <field name="name">university.orari.tree</field>
+            <field name="model">university.orari</field>
+            <field name="arch" type="xml">
+                <tree string="Orari">
+                    <field name="viti"/>
+                    <field name="semester"/>
+                    <field name="dita"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="orari_search_view" model="ir.ui.view">
+            <field name="name">university.orari.search</field>
+            <field name="model">university.orari</field>
+            <field name="arch" type="xml">
+                <search string="Orari">
+                    <field name="dita"/>
+                    <field name="semester"/>
+                    <field name="viti"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="orari_act_window" model="ir.actions.act_window">
+            <field name="name">Orari</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">university.orari</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Orari.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Orari" id="orari_menu" parent="pedagog_root_menu" action="orari_act_window"/>
+
+    </data>
+</odoo>

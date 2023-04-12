@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="action_report_vleresim" model="ir.actions.report">
+            <field name="name">Pasqyra e notave</field>
+            <field name="model">university.vleresim</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">University.report_vleresim</field>
+            <field name="report_file">University.report_vleresim</field>
+        </record>
+
+        <template id="University.report_vleresim">
+        <t t-set="data_report_landscape" t-value="True"/>
+        <t t-set="full_width" t-value="True"/>
+        <t t-call="web.html_container">
+<!--            <h3 t-esc="n"></h3>-->
+            <div>
+                <table class="table table-condensed table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Student</th>
+                            <th>Kredite</th>
+                            <th>Piket Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="docs" t-as="o">
+                            <tr>
+                                <td>
+                                    <span t-esc="o['student']"></span>
+                                </td>
+                                <td>
+                                    <span t-esc="o['kredite']"></span>
+                                </td>
+                                <td>
+                                    <span t-esc="o['total']"></span>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3"></td>
+                            <td>
+                                <span t-esc="mesatarja"></span>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    </data>
+</odoo>

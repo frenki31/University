@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="pedagog_form_view" model="ir.ui.view">
+            <field name="name">university.pedagog.form</field>
+            <field name="model">university.pedagog</field>
+            <field name="arch" type="xml">
+                <form string="Pedagog">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="emri"/>
+                            <h1>
+                                <field name="emri" placeholder="Emer"/>
+                                <field name="mbiemri" placeholder="Mbiemer"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="email"/>
+                                <field name="departament_id"/>
+                            </group>
+                            <group>
+                                <field name="ditelindja"/>
+                                <field name="status"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="pedagog_tree_view" model="ir.ui.view">
+            <field name="name">university.pedagog.tree</field>
+            <field name="model">university.pedagog</field>
+            <field name="arch" type="xml">
+                <tree string="Pedagog">
+                    <field name="emri"/>
+                    <field name="mbiemri"/>
+                    <field name="email"/>
+                    <field name="ditelindja"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="pedagog_search_view" model="ir.ui.view">
+            <field name="name">university.pedagog.search</field>
+            <field name="model">university.pedagog</field>
+            <field name="arch" type="xml">
+                <search string="Padagog">
+                    <field name="emri"/>
+                    <field name="mbiemri"/>
+                    <field name="departament_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="pedagog_act_window" model="ir.actions.act_window">
+            <field name="name">Pedagog</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">university.pedagog</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Pedagog.
+                </p>
+            </field>
+        </record>
+        <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+        <menuitem id="pedagog_root_menu" name="Pedagog" sequence="40">
+            <menuitem name="Pedagoget" id="pedagog_menu" action="pedagog_act_window"/>
+        </menuitem>
+    </data>
+</odoo>

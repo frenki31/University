@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="fatura_form_view" model="ir.ui.view">
+            <field name="name">university.fatura.form</field>
+            <field name="model">university.fatura</field>
+            <field name="arch" type="xml">
+                <form string="Fatura">
+<!--                    <header>-->
+<!--                        <button name="button_method_name" type="object" string="ObjectButton"/>-->
+<!--                        <button name="button_method_name" type="object" string="ObjectButton"/>-->
+<!--                    </header>-->
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="nr_fature"/>
+                            <h1>
+                                <field name="nr_fature"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="tarifa"/>
+                                <field name="bursa"/>
+                                <field name="pagesa"/>
+                            </group>
+                            <group>
+                                <field name="student_id"/>
+                                <field name="viti"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="fatura_tree_view" model="ir.ui.view">
+            <field name="name">university.fatura.tree</field>
+            <field name="model">university.fatura</field>
+            <field name="arch" type="xml">
+                <tree string="ModelTitle">
+                    <field name="nr_fature"/>
+                    <field name="student_id"/>
+                    <field name="pagesa"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="fatura_search_view" model="ir.ui.view">
+            <field name="name">university.fatura.search</field>
+            <field name="model">university.fatura</field>
+            <field name="arch" type="xml">
+                <search string="Fatura">
+                    <field name="nr_fature"/>
+                    <field name="student_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="fatura_act_window" model="ir.actions.act_window">
+            <field name="name">Fatura</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">university.fatura</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Fatura.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Fatura" id="fatura_menu" parent="student_root_menu" action="fatura_act_window"/>
+
+    </data>
+</odoo>
