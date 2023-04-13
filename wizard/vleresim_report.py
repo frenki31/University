@@ -16,4 +16,4 @@ class VleresimReport(models.TransientModel):
             "pike_min": self.pike_min,
             "pike_max": self.pike_max,
         }
-        return self.env.ref('University.action_report_vleresim').report_action(None, data=data)
+        return self.env.ref('university.action_report_vleresim').report_action(None, data=data)
