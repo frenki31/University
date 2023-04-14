@@ -10,7 +10,7 @@ class UniversityPedagog(models.Model):
     mbiemri = fields.Char(string="Mbiemri", required=True)
     ditelindja = fields.Date(string='Ditelindja')
     email = fields.Char(string='Email')
-    departament_id = fields.Many2one(comodel_name='university.departament', string='Departament')
+    departament_id = fields.Many2one(comodel_name='university.departament', string='Departament', required=True)
     status = fields.Selection(string='Status',
                               selection=[('in', 'I brendshem'),
                                          ('out', 'I jashtem')

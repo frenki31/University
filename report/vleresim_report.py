@@ -11,11 +11,9 @@ class UniversityReportVleresim(models.AbstractModel):
         student_ids = data['student_ids']
         pike_min = data['pike_min']
         pike_max = data['pike_max']
-
+        domain = [('status', '=', 'done')]
         if student_ids:
-            domain = [('student_id', 'in', student_ids)]
-        else:
-            domain = []
+            domain += [('student_id', 'in', student_ids)]
 
         vleresim_object = self.env['university.vleresim'].search(domain)
         vleresim = []

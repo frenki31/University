@@ -20,6 +20,9 @@ class UniversityFatura(models.Model):
     status = fields.Selection(string='Status', default='draft',
                               selection=[('draft', 'Papaguar'), ('done', 'Paguar')])
 
+    def done(self):
+        self.status = 'done'
+
     @api.depends('tarifa','bursa')
     def _compute_to_be_paid(self):
         for rec in self:
@@ -28,6 +31,13 @@ class UniversityFatura(models.Model):
     @api.onchange('tarifa', 'student_id')
     def _onchange_tarifa(self):
         self.tarifa = self.student_id.program_id.tarifa
+
+    def write(self, values):
+        res = super(UniversityFatura, self).write(values)
+        for rec in self:
+            if rec.status != 'draft':
+                raise UserError('Fatura eshte e paguar tashme!')
+        return res
 
     def unlink(self):
         raise UserError('Nuk mund te fshihen faturat!')

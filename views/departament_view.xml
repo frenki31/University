@@ -55,7 +55,7 @@
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
-                    There is no examples click here to add new Departament.
+                    Nuk ka asnje departament
                 </p>
             </field>
         </record>

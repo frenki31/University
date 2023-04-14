@@ -7,10 +7,10 @@
             <field name="model">university.fatura</field>
             <field name="arch" type="xml">
                 <form string="Fatura">
-<!--                    <header>-->
-<!--                        <button name="button_method_name" type="object" string="ObjectButton"/>-->
-<!--                        <button name="button_method_name" type="object" string="ObjectButton"/>-->
-<!--                    </header>-->
+                    <header>
+                        <button class="btn-primary" name="done" type="object" string="Paguaj faturen" attrs="{'invisible': [('status','=','done')]}"/>
+                        <field name="status" widget="statusbar" statusbar_visible="draft"/>
+                    </header>
                     <sheet>
                         <div class="oe_title">
                             <label for="nr_fature"/>
@@ -42,6 +42,7 @@
                     <field name="nr_fature"/>
                     <field name="student_id"/>
                     <field name="pagesa"/>
+                    <field name="status"/>
                 </tree>
             </field>
         </record>
@@ -53,6 +54,7 @@
                 <search string="Fatura">
                     <field name="nr_fature"/>
                     <field name="student_id"/>
+                    <field name="status"/>
                 </search>
             </field>
         </record>
@@ -64,7 +66,7 @@
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
-                    There is no examples click here to add new Fatura.
+                    Nuk ka asnje fature te leshuar.
                 </p>
             </field>
         </record>
