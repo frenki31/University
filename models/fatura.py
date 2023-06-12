@@ -20,7 +20,7 @@ class UniversityFatura(models.Model):
     status = fields.Selection(string='Status', default='draft',
                               selection=[('draft', 'Papaguar'), ('done', 'Paguar')])
 
-    def done(self):
+    def paguar(self):
         self.status = 'done'
 
     @api.depends('tarifa','bursa')
@@ -32,11 +32,11 @@ class UniversityFatura(models.Model):
     def _onchange_tarifa(self):
         self.tarifa = self.student_id.program_id.tarifa
 
-    def write(self, values):
-        res = super(UniversityFatura, self).write(values)
-        for rec in self:
-            if rec.status != 'draft':
-                raise UserError('Fatura eshte e paguar tashme!')
+    @api.model
+    def create(self, values):
+        res = super(UniversityFatura, self).create(values)
+        if res.bursa > 100:
+            raise UserError('Bursa maksimale eshte 100%')
         return res
 
     def unlink(self):

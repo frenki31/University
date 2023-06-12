@@ -8,25 +8,25 @@
             <field name="arch" type="xml">
                 <form string="Fatura">
                     <header>
-                        <button class="btn-primary" name="done" type="object" string="Paguaj faturen" attrs="{'invisible': [('status','=','done')]}"/>
+                        <button class="btn-primary" name="paguar" type="object" string="Paguaj faturen" attrs="{'invisible': [('status','=','done')]}"/>
                         <field name="status" widget="statusbar" statusbar_visible="draft"/>
                     </header>
                     <sheet>
                         <div class="oe_title">
                             <label for="nr_fature"/>
                             <h1>
-                                <field name="nr_fature"/>
+                                <field name="nr_fature" attrs="{'readonly': [('status','!=','draft')]}"/>
                             </h1>
                         </div>
                         <group>
                             <group>
                                 <field name="tarifa"/>
-                                <field name="bursa"/>
+                                <field name="bursa" attrs="{'readonly': [('status','!=','draft')]}"/>
                                 <field name="pagesa"/>
                             </group>
                             <group>
-                                <field name="student_id"/>
-                                <field name="viti"/>
+                                <field name="student_id" attrs="{'readonly': [('status','!=','draft')]}"/>
+                                <field name="viti" attrs="{'readonly': [('status','!=','draft')]}"/>
                             </group>
                         </group>
                     </sheet>

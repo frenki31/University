@@ -78,7 +78,7 @@ class UniversityVleresimKursi(models.Model):
 
     @api.onchange('kurs_id', 'nota')
     def _onchange_kredite(self):
-        if self.nota != 4:
+        if self.nota >= 4:
             self.kredite = self.kurs_id.kredite
         else:
             self.kredite = 0

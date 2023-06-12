@@ -21,7 +21,8 @@
                         <tr>
                             <th>Student</th>
                             <th>Kredite</th>
-                            <th>Piket Total</th>
+                            <th>Piket</th>
+                            <th>Nota Mesatare</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,6 +36,9 @@
                                 </td>
                                 <td>
                                     <span t-esc="o['total']"></span>
+                                </td>
+                                <td>
+                                    <span t-esc="o['nota']"></span>
                                 </td>
                             </tr>
                         </t>
